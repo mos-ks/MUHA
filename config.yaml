@@ -1,0 +1,12 @@
+credentials:
+  usernames:
+    labeler:
+      email: labelwithuncertainty@mail.de
+      name: Labeler 
+      password: '$2b$12$qDE5NSwgat6MMZn0Rctpfe3D6134te1dT8y7rALB6eD2GHvm0jD7u'
+cookie:
+  expiry_days: 30
+  key: Va8tbyP2dZN9oSDUoevmvH_X12rBwmw2ekrYQLUHXfewTBsfKREatRZms2fovhqh
+  name: labelsccksricookie
+preauthorized:
+  emails:

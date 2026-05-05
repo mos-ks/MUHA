@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>From Model Uncertainty to Human Attention &middot; Project page</title>
+<meta name="description" content="Project page for 'From Model Uncertainty to Human Attention: Localization-Aware Visual Cues for Scalable Annotation Review'." />
+<meta property="og:title" content="From Model Uncertainty to Human Attention" />
+<meta property="og:description" content="Localization-aware visual cues for scalable annotation review. Interactive viewer comparing original KITTI labels, detector predictions, and re-annotated ground truth." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="venue">Under review &middot; 2026</div>
+    <h1>
+      From Model Uncertainty to Human Attention:<br />
+      <span class="accent">Localization-Aware Visual Cues for Scalable Annotation Review</span>
+    </h1>
+    <ol class="authors">
+      <li>Moussa Kassem Sbeyti<sup>1,&dagger;</sup></li>
+      <li>Joshua Holstein<sup>2,&dagger;</sup></li>
+      <li>Philipp Spitzer<sup>2</sup></li>
+      <li>Nadja Klein<sup>1</sup></li>
+      <li>Gerhard Satzger<sup>2</sup></li>
+    </ol>
+    <p class="affiliation">
+      <sup>1</sup>Scientific Computing Center, Karlsruhe Institute of Technology &nbsp;·&nbsp;
+      <sup>2</sup>Institute for Information Systems, Karlsruhe Institute of Technology<br />
+      <sup>&dagger;</sup>Equal contribution. Authors are permitted to list their name first.
+    </p>
+
+    <nav class="cta">
+      <a class="btn primary" href="#paper">Paper&nbsp;·&nbsp;PDF</a>
+      <a class="btn" href="#viewer">Interactive viewer</a>
+      <a class="btn" id="repo-link" href="#" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.49-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.23 1.88.88 2.34.67.07-.52.28-.88.51-1.08-1.78-.2-3.65-.89-3.65-3.96 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82A7.69 7.69 0 0 1 8 4.78c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.96.29.25.54.74.54 1.49v2.21c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        Code on GitHub
+      </a>
+    </nav>
+
+    <div class="tldr">
+      <strong>TL;DR.</strong> Surfacing per-box <em>localization</em> uncertainty in the labeling
+      interface redirects annotator attention toward boxes the detector got
+      spatially wrong. Across 120 participants and 1,800 trials, this
+      yielded <strong>+0.70 mIoU %-points</strong> in label quality and a
+      <strong>7.2% speed-up</strong>, with both effects scaling with image
+      difficulty.
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="abstract" class="text-block">
+  <h2>Abstract</h2>
+  <p>
+    High-quality labeled data is essential for training robust machine
+    learning models, yet obtaining annotations at scale remains expensive.
+    AI-assisted annotation has therefore become standard in large-scale
+    labeling workflows. However, in tasks where model predictions carry
+    two independent components, a class label and spatial boundaries, a
+    model may classify an object with high confidence while mislocalizing
+    it. Existing AI-assisted workflows offer annotators no signal about
+    where spatial errors are most likely. Without such guidance, humans
+    may systematically underinspect subtly misplaced boxes.
+  </p>
+  <p>
+    We address this by studying the effect of visualizing spatial
+    uncertainty via a purpose-built interface. In a controlled study with
+    120 participants, those receiving uncertainty cues achieve higher
+    label quality while being faster overall. A box-level analysis
+    confirms that the cues redirect annotator effort toward
+    high-uncertainty predictions and away from well-localized boxes.
+    These findings establish localization uncertainty as a lever to
+    improve human-in-the-loop annotation.
+  </p>
+</section>
+
+<section id="viewer" class="viewer-section">
+  <div class="viewer-header">
+    <h2>Interactive viewer</h2>
+    <p>
+      Step through the 97 KITTI images used in the experiment and compare
+      the three annotation layers reported in the paper. Toggle layers on
+      or off, jump between difficulty bins, or use the
+      <kbd>&larr;</kbd> / <kbd>&rarr;</kbd> keys to navigate.
+    </p>
+  </div>
+
+  <div class="viewer-card">
+    <div class="viewer-toolbar">
+      <div class="layer-toggles">
+        <label class="toggle kitti">
+          <input type="checkbox" data-layer="kitti" checked />
+          <span class="swatch"></span>
+          Original KITTI labels
+        </label>
+        <label class="toggle predictions">
+          <input type="checkbox" data-layer="predictions" checked />
+          <span class="swatch"></span>
+          Detector predictions
+        </label>
+        <label class="toggle relabeled">
+          <input type="checkbox" data-layer="relabeled" checked />
+          <span class="swatch"></span>
+          Re-annotated ground truth
+        </label>
+        <label class="toggle uncertainty-toggle">
+          <input type="checkbox" id="color-by-uncertainty" />
+          <span class="swatch unc-swatch"></span>
+          Colour predictions by uncertainty
+        </label>
+      </div>
+
+      <div class="bin-toggles">
+        <label class="pill"><input type="radio" name="bin" value="all" checked /> All</label>
+        <label class="pill"><input type="radio" name="bin" value="low" /> Easy</label>
+        <label class="pill"><input type="radio" name="bin" value="mid" /> Medium</label>
+        <label class="pill"><input type="radio" name="bin" value="high" /> Difficult</label>
+      </div>
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="annotation-canvas" aria-label="Annotated KITTI image"></canvas>
+      <div class="canvas-meta" id="canvas-meta">Loading…</div>
+    </div>
+
+    <div class="viewer-footer">
+      <button class="nav-btn" id="prev-btn" aria-label="Previous image">&larr; Prev</button>
+      <div class="position">
+        <span id="img-id">—</span>
+        <small id="img-pos">0 / 0</small>
+      </div>
+      <button class="nav-btn" id="next-btn" aria-label="Next image">Next &rarr;</button>
+    </div>
+  </div>
+
+  <details class="legend-details">
+    <summary>What am I looking at?</summary>
+    <ul>
+      <li><span class="dot kitti"></span> <strong>Original KITTI labels</strong> are the boxes that ship with the dataset. They are sometimes imprecise, missing for occluded/distant objects, or mis-labelled.</li>
+      <li><span class="dot predictions"></span> <strong>Detector predictions</strong> come from the probabilistic EfficientDet-D0 model. Toggle <em>“Colour by uncertainty”</em> to map the per-coordinate aleatoric localization uncertainty onto the box border (blue = certain, red = uncertain).</li>
+      <li><span class="dot relabeled"></span> <strong>Re-annotated ground truth</strong> is the gold standard the three authors produced after independently re-labelling thirds of the experimental pool. It corrects 41 erroneous labels and adds 430 missed annotations.</li>
+    </ul>
+  </details>
+</section>
+
+<section id="paper" class="text-block paper-block">
+  <h2>Paper</h2>
+  <p>
+    A pre-print PDF will be linked here once available. In the meantime
+    please use the BibTeX entry below.
+  </p>
+  <pre class="bib"><code>@unpublished{KaSbHoSpNaSa2026,
+  title  = {From Model Uncertainty to Human Attention:
+            Localization-Aware Visual Cues for Scalable Annotation Review},
+  author = {Kassem Sbeyti, Moussa and Holstein, Joshua and Spitzer, Philipp
+            and Klein, Nadja and Satzger, Gerhard},
+  note   = {Manuscript under review},
+  year   = {2026}
+}</code></pre>
+  <button class="btn copy-bib" id="copy-bib">Copy BibTeX</button>
+</section>
+
+<section class="text-block">
+  <h2>Data &amp; code</h2>
+  <ul class="resources">
+    <li>
+      <strong>Labeling tool</strong> — a Streamlit app that participants
+      used in the study, with a <code>relabel_*</code> mode used by the
+      three authors to produce the re-annotated ground truth.
+      <a id="repo-link-2" href="#" target="_blank" rel="noopener">View on GitHub →</a>
+    </li>
+    <li>
+      <strong>Detector predictions</strong> with per-coordinate aleatoric
+      localization uncertainty (<code>data/detector_predictions.txt</code>).
+    </li>
+    <li>
+      <strong>Re-annotated ground truth</strong> covering the experimental
+      image pool (<code>data/relabeled_ground_truth/</code>).
+    </li>
+    <li>
+      <strong>Difficulty bins</strong> stratifying the candidate pool by
+      mean per-image localization uncertainty
+      (<code>data/{low,mid,high}_uncertainty.txt</code>).
+    </li>
+  </ul>
+  <p class="footnote">
+    The KITTI subset shipped with this repository is redistributed under
+    the <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>
+    license. For commercial use, please obtain the data directly from the
+    <a href="https://www.cvlibs.net/datasets/kitti">KITTI website</a>. See
+    <code>LICENSE-DATA.md</code> in the repository for the full attribution.
+  </p>
+</section>
+</main>
+
+<footer>
+  <p>
+    Source code <a href="LICENSE">MIT</a>. Data
+    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.
+    Built with <a href="https://pages.github.com/">GitHub Pages</a>.
+  </p>
+</footer>
+
+<script src="viewer.js" defer></script>
+</body>
+</html>

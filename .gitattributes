@@ -1,0 +1,17 @@
+# Treat KITTI label files and prediction dumps as plain text with LF endings
+# (no CRLF conversion — they're parsed by code that expects Unix line endings).
+*.txt text eol=lf
+*.py  text eol=lf
+*.js  text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md  text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.cff text eol=lf
+
+# Binary assets — store as regular blobs (do NOT route through Git LFS, since
+# GitHub Pages serves the LFS pointer rather than the file content).
+*.png binary
+*.jpg binary
+*.jpeg binary

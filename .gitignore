@@ -1,0 +1,18 @@
+# Run-time annotation outputs
+updated_detections_*.txt
+timing_data_*.txt
+
+# Python cruft
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/

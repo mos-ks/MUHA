@@ -1,0 +1,54 @@
+cff-version: 1.2.0
+title: >-
+  From Model Uncertainty to Human Attention: Localization-Aware Visual
+  Cues for Scalable Annotation Review
+message: >-
+  If you use this software or the re-annotated ground truth, please cite
+  the paper using the metadata below.
+type: software
+authors:
+  - family-names: Kassem Sbeyti
+    given-names: Moussa
+    affiliation: Scientific Computing Center, Karlsruhe Institute of Technology
+  - family-names: Holstein
+    given-names: Joshua
+    affiliation: Institute for Information Systems, Karlsruhe Institute of Technology
+  - family-names: Spitzer
+    given-names: Philipp
+    affiliation: Institute for Information Systems, Karlsruhe Institute of Technology
+  - family-names: Klein
+    given-names: Nadja
+    affiliation: Scientific Computing Center, Karlsruhe Institute of Technology
+  - family-names: Satzger
+    given-names: Gerhard
+    affiliation: Institute for Information Systems, Karlsruhe Institute of Technology
+repository-code: "https://github.com/mos-ks/MUHA"
+url: "https://mos-ks.github.io/MUHA/"
+abstract: >-
+  We study the effect of exposing model-estimated spatial uncertainty to
+  annotators via a purpose-built interface, directing their attention to
+  objects whose boundaries are deemed unreliable. In a randomized
+  controlled study with 120 participants across 1,800 annotation trials on
+  autonomous driving images, participants receiving uncertainty cues
+  achieved higher label quality (0.70 mIoU %-point improvement) and were
+  faster overall (7.2%). The findings establish localization uncertainty
+  as a practical lever for improving human-in-the-loop annotation wherever
+  model-assisted review involves spatial outputs.
+keywords:
+  - data annotation
+  - human-AI decision-making
+  - localization uncertainty
+  - object detection
+  - autonomous driving
+license: MIT
+# --- Will be filled in once the paper is accepted/published ---
+# doi: "10.xxxx/xxxxxx"
+# preferred-citation:
+#   type: article
+#   journal: "<journal name>"
+#   year: <YYYY>
+#   volume: <V>
+#   issue: <N>
+#   start: <PP>
+#   end: <PP>
+#   doi: "10.xxxx/xxxxxx"
